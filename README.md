@@ -1,4 +1,4 @@
-<sub>🇧🇷 [Versão em português](README.pt-BR.md)</sub>
+<sub>🇧🇷 [Versão em português](https://github.com/Code-Vida/Code-Vida/blob/main/README.pt-BR.md)</sub>
 
 # Hi, I'm Túlio 👋
 
