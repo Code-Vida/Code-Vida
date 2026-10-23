@@ -15,6 +15,8 @@ web, mobile e as integrações que fazem o negócio girar (pagamentos, WhatsApp,
 SaaS em que a cliente marca, remarca e cancela horário conversando com um robô no WhatsApp,
 e o salão acompanha tudo por um painel web.
 
+<p align="center"><img src="assets/qiki.gif" width="260" alt="Cliente marcando horário com o robô do Qiki no WhatsApp"></p>
+
 **Stack:** Next.js · TypeScript · Node.js · PostgreSQL (Supabase) · WhatsApp Cloud API (Meta) · Asaas · OpenAI
 
 - **Multi-tenant seguro:** isolamento entre salões em duas camadas no PostgreSQL (Row Level
@@ -39,6 +41,12 @@ e o salão acompanha tudo por um painel web.
 
 App de controle financeiro para Android, iOS e web, com o Beto, um assistente de IA que responde
 perguntas como "quanto gastei com alimentação este mês?".
+
+<p align="center">
+  <img src="assets/cashtor-inicio.gif" width="220" alt="Tela inicial do Cashtor com saldo, orçamentos e movimentações">
+  <img src="assets/cashtor-metas.gif" width="220" alt="Metas e sonhos no Cashtor">
+  <img src="assets/cashtor-beto.gif" width="220" alt="Beto, o assistente de IA, resumindo os gastos do mês">
+</p>
 
 **Stack:** React Native (Expo) · TypeScript · Supabase (Postgres, Auth, Edge Functions) · OpenAI
 
