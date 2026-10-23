@@ -1,80 +1,81 @@
-# Olá, eu sou o Túlio 👋
+<sub>🇧🇷 [Versão em português](README.pt-BR.md)</sub>
 
-Desenvolvedor full-stack. Construo produtos do zero até a produção: banco de dados, back-end,
-web, mobile e as integrações que fazem o negócio girar (pagamentos, WhatsApp, IA).
+# Hi, I'm Túlio 👋
 
-**Stack principal:** TypeScript · Node.js · Next.js · React Native (Expo) · Flutter · PostgreSQL / Supabase · GraphQL
+Full-stack developer. I build products from zero to production: database, back end, web,
+mobile, and the integrations that keep the business running (payments, WhatsApp, AI).
 
-> Os repositórios dos meus produtos são privados. Abaixo está o que cada um faz e o que eu
-> resolvi neles. Mostro o código com prazer numa conversa.
+**Main stack:** TypeScript · Node.js · Next.js · React Native (Expo) · Flutter · PostgreSQL / Supabase · GraphQL
+
+> The repositories for my products are private. Below is what each one does and the problems I
+> solved in them. Happy to walk through the code on a call.
 
 ---
 
-## 🗓️ Qiki — agendamento por WhatsApp para salões e barbearias
+## 🗓️ Qiki — WhatsApp scheduling for salons and barbershops
 
-SaaS em que a cliente marca, remarca e cancela horário conversando com um robô no WhatsApp,
-e o salão acompanha tudo por um painel web.
+SaaS where customers book, reschedule, and cancel appointments by chatting with a bot on WhatsApp,
+while the salon manages everything from a web dashboard.
 
-<p align="center"><img src="assets/qiki.gif" width="260" alt="Cliente marcando horário com o robô do Qiki no WhatsApp"></p>
+<p align="center"><img src="assets/qiki.gif" width="260" alt="Customer booking an appointment with the Qiki bot on WhatsApp"></p>
 
 **Stack:** Next.js · TypeScript · Node.js · PostgreSQL (Supabase) · WhatsApp Cloud API (Meta) · Asaas · OpenAI
 
-- **Multi-tenant seguro:** isolamento entre salões em duas camadas no PostgreSQL (Row Level
-  Security + chaves estrangeiras compostas), provado por testes de integração e de intrusão
+- **Secure multi-tenancy:** tenant isolation enforced in two layers in PostgreSQL (Row Level
+  Security + composite foreign keys), verified by integration tests and penetration testing
   (OWASP ZAP).
-- **Robô de conversa:** motor de conversa puro e testável; a IA ajuda a entender a mensagem, mas
-  disponibilidade e gravação do horário nunca dependem dela.
-- **Sem agendamento duplicado:** constraint de exclusão no Postgres, testada sob concorrência real.
-- **Pagamentos:** assinatura recorrente (cartão e Pix) com webhooks idempotentes, estorno
-  automático e tratamento de chargeback.
-- **Segurança web:** CSP com nonce, proteção contra SSRF e open redirect, rate limiting e captcha.
-- **LGPD:** exclusão do titular em uma transação, retenção automática de dados e logs sem dados
-  pessoais.
-- Página pública de agendamento, lembretes, lista de espera, oferta de horários vagos e
-  sincronização com Google Agenda.
+- **Conversation engine:** pure, testable state machine; AI helps understand the message, but
+  availability checks and booking never depend on it.
+- **No double bookings:** a Postgres exclusion constraint, tested under real concurrency.
+- **Payments:** recurring subscriptions (credit card and Pix) with idempotent webhooks, automatic
+  refunds, and chargeback handling.
+- **Web security:** nonce-based CSP, SSRF and open-redirect protection, rate limiting, and CAPTCHA.
+- **LGPD (Brazil's GDPR):** transactional data-subject erasure, automatic data retention, and logs
+  free of personal data.
+- Public booking page, reminders, waitlist, open-slot offers, and Google Calendar sync.
 
-**Status:** app aprovado pela Meta, em preparação para o lançamento.
+**Status:** approved by Meta, preparing for launch.
 
 ---
 
-## 🦫 Cashtor — finanças pessoais sem ansiedade
+## 🦫 Cashtor — stress-free personal finance
 
-App de controle financeiro para Android, iOS e web, com o Beto, um assistente de IA que responde
-perguntas como "quanto gastei com alimentação este mês?".
+Money management app for Android, iOS, and web, featuring Beto, an AI assistant that answers
+questions like "how much did I spend on food this month?".
 
 <p align="center">
-  <img src="assets/cashtor-inicio.gif" width="220" alt="Tela inicial do Cashtor com saldo, orçamentos e movimentações">
-  <img src="assets/cashtor-metas.gif" width="220" alt="Metas e sonhos no Cashtor">
-  <img src="assets/cashtor-beto.gif" width="220" alt="Beto, o assistente de IA, resumindo os gastos do mês">
+  <img src="assets/cashtor-inicio.gif" width="220" alt="Cashtor home screen with balance, budgets, and transactions">
+  <img src="assets/cashtor-metas.gif" width="220" alt="Goals in Cashtor">
+  <img src="assets/cashtor-beto.gif" width="220" alt="Beto, the AI assistant, summarizing the month's spending">
 </p>
 
 **Stack:** React Native (Expo) · TypeScript · Supabase (Postgres, Auth, Edge Functions) · OpenAI
 
-- Contas, cartões de crédito com ciclo de fatura e parcelas, categorias, metas e contas fixas.
-- **Importação de fatura por foto:** a IA lê a imagem e o app monta os lançamentos.
-- **Modo família:** finanças compartilhadas, com acesso só por convite.
-- **Segurança e privacidade:** chave da IA fora do app (Edge Function com JWT), limite de uso de
-  IA por usuário, RLS, bloqueio por biometria, modo que esconde os valores, exclusão de conta
-  com todos os dados e backup noturno do banco.
-- Kill switches remotos para desligar recursos de IA sem publicar nova versão.
+- Accounts, credit cards with billing cycles and installments, categories, goals, and recurring bills.
+- **Import a credit card bill from a photo:** AI reads the image and the app creates the transactions.
+- **Family mode:** shared household finances, invite-only.
+- **Security and privacy:** AI key kept off the device (JWT-protected Edge Function), per-user AI
+  usage limits, RLS, biometric lock, a mode that hides amounts, full account and data deletion,
+  and nightly database backups.
+- Remote kill switches to turn AI features off without shipping a new release.
 
-**Status:** em fase de publicação na Play Store.
-
----
-
-## 🏪 Fluxy — gestão de loja e ponto de venda *(em desenvolvimento)*
-
-Sistema de gestão para varejo: produtos, estoque, vendas, clientes, fornecedores e crediário.
-
-**Stack:** Flutter (Android, web e desktop) · GraphQL (Apollo Server) · Node.js · MongoDB · SQLite
-
-- **Funciona offline:** banco local (SQLite) com serviço de sincronização com o servidor.
-- Leitura de código de barras, checkout, crédito da loja e pedidos de compra.
-- Relatório de estoque com exportação em CSV e Excel.
-- Uma base de código para celular, navegador e desktop, com layout responsivo e tema claro e escuro.
-
-**Próximos passos:** emissão de NF-e, comissão de vendedores e mais relatórios.
+**Status:** being published on the Google Play Store.
 
 ---
 
-📫 **Contato:** [tsalmeida1988@gmail.com](mailto:tsalmeida1988@gmail.com) · [LinkedIn](https://www.linkedin.com/in/tulio-almeida/)
+## 🏪 Fluxy — retail management and point of sale *(in development)*
+
+Management system for retail stores: products, inventory, sales, customers, suppliers, and store credit.
+
+**Stack:** Flutter (Android, web, and desktop) · GraphQL (Apollo Server) · Node.js · MongoDB · SQLite
+
+- **Works offline:** local database (SQLite) with a sync service to the server.
+- Barcode scanning, checkout, store credit, and purchase orders.
+- Inventory report with CSV and Excel export.
+- One codebase for mobile, browser, and desktop, with a responsive layout and light and dark themes.
+
+**Next steps:** Brazilian electronic invoicing (NF-e), sales commissions, and more reports.
+
+---
+
+📫 **Contact:** [tsalmeida1988@gmail.com](mailto:tsalmeida1988@gmail.com) · [LinkedIn](https://www.linkedin.com/in/tulio-almeida/)
